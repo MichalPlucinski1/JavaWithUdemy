@@ -2,20 +2,61 @@ public class Main {
     public static void main(String[] args) {
         System.out.println(1000);
 
-    //    printYearsAndDays(561600);
+        System.out.println(sumDigits(5525));
+
 
     }
 
-    public static boolean isCatPlaying   (boolean summer, int temperature){
-        if( (!summer) && ((temperature >= 25) && (temperature <= 35)) ){
-            return true;
+    public static int addingNumbers() {
+        int sum = 0;
+        int howMuch = 0;
+        for (int i = 1; i <= 100; i++) {
+            if ((i % 3 == 0) && (i % 5 == 0)) {
+                sum += i;
+                howMuch++;
+                System.out.println(i + " ");
+
+                if (howMuch == 5)
+                    break;
+            }
         }
-        if((summer) && ((temperature >= 25) && (temperature <= 45)) ){
-            return true;
-        }
-        return false;
+
+        return sum;
     }
 
+    public static boolean isOdd(int number) {
+        if(number < 0)
+            return false;
+        return (number % 2 == 1);
+    }
+
+    public static int sumOdd(int start, int end){
+
+        if((start < 0) || (end < 0) ||( start > end))
+            return -1;
+        int sum = 0;
+        for(int i = start; i <= end; i++){
+            if(isOdd(i))
+                sum += i;
+        }
+        return sum;
+    }
+
+
+    public static int sumDigits(int number){
+        if(number < 0)
+            return -1;
+        int sum = 0;
+
+        do {
+            sum += number % 10;
+            number /= 10;
+        }while(number> 0);
+        return sum;
+        }
 
 
 }
+
+
+
