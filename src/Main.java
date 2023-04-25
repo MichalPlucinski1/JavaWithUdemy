@@ -1,9 +1,13 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println(1000);
+        //System.out.println(1000);
 
-        System.out.println(sumDigits(5525));
-
+        //System.out.println(sumDigits(5525));
+        //System.out.println(sumFirstAndLastDigit(101));
+        //StudentRecord s1 = new StudentRecord("John",2);
+        //System.out.println(s1);
+        Calculator calc = new Calculator(new Floor(50,50), new Carpet(8));
+        System.out.println(calc.getTotalCost());
 
     }
 
@@ -42,7 +46,6 @@ public class Main {
         return sum;
     }
 
-
     public static int sumDigits(int number){
         if(number < 0)
             return -1;
@@ -53,6 +56,20 @@ public class Main {
             number /= 10;
         }while(number> 0);
         return sum;
+        }
+
+
+    public static int sumFirstAndLastDigit(int number){
+            int last = number % 10;
+            int first = number;
+
+            while(first >= 10){
+                first/=10;
+            }
+
+        System.out.println("first " + first + " last: " + last);
+            return first + last;
+
         }
 
 
