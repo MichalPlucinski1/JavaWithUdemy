@@ -1,13 +1,19 @@
 public class Main {
     public static void main(String[] args) {
+
+
+
+
+
+
         //System.out.println(1000);
 
         //System.out.println(sumDigits(5525));
         //System.out.println(sumFirstAndLastDigit(101));
         //StudentRecord s1 = new StudentRecord("John",2);
         //System.out.println(s1);
-        Calculator calc = new Calculator(new Floor(50,50), new Carpet(8));
-        System.out.println(calc.getTotalCost());
+        //Calculator calc = new Calculator(new Floor(50,50), new Carpet(8));
+        //System.out.println(calc.getTotalCost());
 
     }
 
