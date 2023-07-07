@@ -45,7 +45,7 @@ public class ListChallenge {
         }
     }
 
-    public static void removeItems(ArrayList<String> groceries){
+    public static void removeItems(@org.jetbrains.annotations.NotNull ArrayList<String> groceries){
         Scanner scanner = new Scanner(System.in);
         System.out.println("to remove, type elements, delimiteds by comma");
         String[] items = scanner.nextLine().split(",");
