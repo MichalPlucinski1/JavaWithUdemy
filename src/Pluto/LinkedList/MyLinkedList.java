@@ -2,6 +2,7 @@ package Pluto.LinkedList;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 public class MyLinkedList {
     public static void main(String[]args){
@@ -54,5 +55,36 @@ public class MyLinkedList {
         System.out.println("Element from peekFirst() = " + items.peekFirst());
         System.out.println("Element from peekLast() = " + items.peekLast());
 
+
+        System.out.println("trip starts from " + items.getFirst());
+        for (int i = 1; i < items.size(); i++){
+            System.out.println("-->From: " + items.get(i-1) + " to " + items.get(i));
+        }
+        System.out.println("trips end at " + items.getLast());
+
+        ListIterator<String> iterator = items.listIterator(1);
+        String previousTown = items.getFirst();
+        while(iterator.hasNext()){
+            var town = iterator.next();
+            System.out.println("--> from: " + previousTown + " to " + town);
+        }
+        testIterator(items);
+    }
+    private static void testIterator(LinkedList<String> list){
+        System.out.println("--- test iterator ---");
+        var iterator = list.listIterator();
+        while(iterator.hasNext()){
+            System.out.println(iterator.next());
+        }
+//        if(iterator.next().equals("OL")){
+////            iterator.remove();
+//            iterator.add("Lake");
+//        }
+
+//        iterator  only forwards and supports only remove
+
+//        listIterator forword and backword, remove, add and set
+
+        System.out.println(list);
     }
 }
