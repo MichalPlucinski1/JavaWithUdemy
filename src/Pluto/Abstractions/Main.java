@@ -1,23 +1,38 @@
 package Pluto.Abstractions;
 
 
+import java.util.LinkedList;
+
 public class Main {
     public static void main(String[] args) {
 
 
-        Node n1 = new Node(11);
-        Node n2 = new Node(13);
-        Node n3 = new Node(15);
-        Node n4 = new Node(8);
-        Node n5 = new Node(9);
-        Node n6 = new Node(12);
-
         ListItem root = new Node(10);
         MyLinkedList ll = new MyLinkedList(root);
 
+        LinkedList<Boolean> errors = new LinkedList<>();
 
-        ll.addItem(n4);
-        ll.addItem(n5);
+
+
+        LinkedList<Node> nodes = new LinkedList<>();
+
+        for(int i = -12; i < 20; i+=4){
+            nodes.add(new Node(i));
+        }
+
+        int i = 0;
+        for (Node node:nodes) {
+            errors.add(ll.addItem(nodes.get(i)));
+
+            System.out.println(i++ + " " + node.value);
+
+        }
+
+
+
+
+
+
         System.out.println("traverse:");
 
         ll.traverse(root);

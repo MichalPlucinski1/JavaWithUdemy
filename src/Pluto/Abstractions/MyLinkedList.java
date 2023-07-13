@@ -26,34 +26,73 @@ public class MyLinkedList implements NodeList {
                 System.out.println("is smaller then root, adding on beginning");
                 ListItem iterator = root;
                 while(iterator.previous() != null){
-                    if(iterator.compareTo(item) < 0){
-                        iterator = iterator.previous();
-                    }
-                    else if(iterator.compareTo(item) == 0){
-                        return false;
-                    }
-                    else {
+                    if(iterator.compareTo(item) > 0){ //item is bigger -> replacing iterator
                         item.setNext(iterator.next());
                         item.setPrevious(iterator);
+                        iterator.next().setPrevious(item);
+
                         iterator.setNext(item);
                         return true;
                     }
-                }
-                if(iterator.compareTo(item) < 0) {
+                    else if(iterator.compareTo(item) < 0){  //item is still smaller -> continue to traverse
+                        iterator = iterator.previous();
+
+                    }
+                    else { //if equal
+                        return false;
+                    }
+                } // iter.prev is null
+                if(iterator.compareTo(item) < 0) { // if smaller, add at the end
                     item.setNext(iterator);
                     iterator.setPrevious(item);
-                }else if(iterator.compareTo(item) > 0){
+                    return true;
+                }else if(iterator.compareTo(item) > 0){ //if bigger, replace iter
+                    iterator.next().setPrevious(item);
                     item.setNext(iterator.next());
                     item.setPrevious(iterator);
                     iterator.setNext(item);
+                    return true;
                 }
                 else return false;
 
 
 
         } else if (root.compareTo(item) > 0) { //item is bigger
-                System.out.println("still in develop");
-                return true;
+                ListItem iterator = root;
+                while(iterator.next() != null){
+                    if(iterator.compareTo(item) < 0){ //replacing -> item going before item
+                        System.out.println("item " + item.value + " going before " + iterator.value);
+                        iterator.previous().setNext(item);
+                        item.setNext(iterator);
+                        item.setPrevious(iterator.previous());
+                        iterator.setPrevious(item);
+                        return true;
+                    }
+                    else if(iterator.compareTo(item) > 0){
+                        System.out.println("item " + item.value + " smaller then " + iterator.value + ", continue to search");
+                        iterator = iterator.next();
+                    }
+                    else return false;
+                }
+                if(iterator.compareTo(item) > 0){
+                    System.out.println("item added at the end");
+                    item.setPrevious(iterator);
+                    iterator.setNext(item);
+                    return true;
+                } else if (iterator.compareTo(item) < 0) {
+                    System.out.println("item added before " + iterator.value);
+                    iterator.previous().setNext(item);
+                    item.setPrevious(iterator.previous());
+                    iterator.setPrevious(item);
+                    item.setNext(iterator);
+
+                    System.out.println("item: " + item.previous().value + " " + item.value + " " + item.next().value);
+                    System.out.println("iterator: " + iterator.previous().value + " " + iterator.value + " " + null);
+                    return true;
+                }
+
+
+                return false;
         }
             return false;
     }
