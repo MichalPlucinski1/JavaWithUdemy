@@ -24,7 +24,8 @@ public class Main {
         for (Node node:nodes) {
             errors.add(ll.addItem(nodes.get(i)));
 
-            System.out.println(i++ + " " + node.value);
+            //System.out.println(i + " " + node.value);
+            i++;
 
         }
 
@@ -34,6 +35,12 @@ public class Main {
 
 
         System.out.println("traverse:");
+
+        ll.traverse(root);
+
+
+
+        System.out.println(ll.removeItem(nodes.get(7)));
 
         ll.traverse(root);
 

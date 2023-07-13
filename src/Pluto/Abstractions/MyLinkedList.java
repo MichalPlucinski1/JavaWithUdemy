@@ -16,14 +16,12 @@ public class MyLinkedList implements NodeList {
     @Override
     public boolean addItem(ListItem item) {
         //should add item, avoiding duplicated, must use Node.compareTo()
-        System.out.println("adding " + item.value);
         if(root == null){
             root = item;
             return true;
         }
 
             if(root.compareTo(item) < 0){ //item is smaller then root
-                System.out.println("is smaller then root, adding on beginning");
                 ListItem iterator = root;
                 while(iterator.previous() != null){
                     if(iterator.compareTo(item) > 0){ //item is bigger -> replacing iterator
@@ -61,7 +59,6 @@ public class MyLinkedList implements NodeList {
                 ListItem iterator = root;
                 while(iterator.next() != null){
                     if(iterator.compareTo(item) < 0){ //replacing -> item going before item
-                        System.out.println("item " + item.value + " going before " + iterator.value);
                         iterator.previous().setNext(item);
                         item.setNext(iterator);
                         item.setPrevious(iterator.previous());
@@ -69,25 +66,20 @@ public class MyLinkedList implements NodeList {
                         return true;
                     }
                     else if(iterator.compareTo(item) > 0){
-                        System.out.println("item " + item.value + " smaller then " + iterator.value + ", continue to search");
                         iterator = iterator.next();
                     }
                     else return false;
                 }
                 if(iterator.compareTo(item) > 0){
-                    System.out.println("item added at the end");
                     item.setPrevious(iterator);
                     iterator.setNext(item);
                     return true;
                 } else if (iterator.compareTo(item) < 0) {
-                    System.out.println("item added before " + iterator.value);
                     iterator.previous().setNext(item);
                     item.setPrevious(iterator.previous());
                     iterator.setPrevious(item);
                     item.setNext(iterator);
 
-                    System.out.println("item: " + item.previous().value + " " + item.value + " " + item.next().value);
-                    System.out.println("iterator: " + iterator.previous().value + " " + iterator.value + " " + null);
                     return true;
                 }
 
@@ -99,21 +91,47 @@ public class MyLinkedList implements NodeList {
 
     @Override
     public boolean removeItem(ListItem item) {
-        if(root == item){
-            root = null;
+
+        System.out.println("removing " + item.value);
+        if(root == null){
+            root = item;
             return true;
         }
 
-        if(root == null){
-            return false;
-        }
-        if(root.compareTo(item) < 0){
-            removeItem(root.leftLink);
-        } else if (root.compareTo(item) > 0) {
-            removeItem(root.rightLink);
-        }
-        return false;
+        ListItem iterator = root;
+        //setting iterator of first element
 
+        while(iterator.previous()!= null){
+            iterator = iterator.previous();
+
+        }
+        while(iterator.next()!= null){
+            if(iterator.value == item.value){
+                if(iterator.previous() == null){
+                    iterator.next().setPrevious(null);
+                    return true;
+                }
+                if(iterator.next() == null){
+                    System.out.println("before last");
+                    iterator.previous().setNext(null);
+                    return true;
+                }
+                else
+                iterator.next().setPrevious(iterator.previous());
+                iterator.previous().setNext(iterator.next());
+
+                return true;
+            }
+            iterator = iterator.next();
+
+        }
+        if(iterator.value == item.value){
+            iterator.previous().setNext(null);
+            return true;
+        }
+
+
+        return false;
     }
 
     @Override
