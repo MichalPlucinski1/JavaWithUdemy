@@ -15,9 +15,9 @@ public class Main {
         ListItem root = new Node(10);
         MyLinkedList ll = new MyLinkedList(root);
 
+
         ll.addItem(n4);
         ll.addItem(n5);
-        ll.addItem(n3);
         System.out.println("traverse:");
 
         ll.traverse(root);

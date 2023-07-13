@@ -22,50 +22,37 @@ public class MyLinkedList implements NodeList {
             return true;
         }
 
-            if(root.compareTo(item) < 0){ //item is smaller
+            if(root.compareTo(item) < 0){ //item is smaller then root
                 System.out.println("is smaller then root, adding on beginning");
                 ListItem iterator = root;
                 while(iterator.previous() != null){
-                    if(iterator.compareTo(item) > 0){ //first time, when item will be bigger
-                        item.setNext(iterator);
-                        item.setPrevious(iterator.previous());
-                        iterator.previous().setNext(item);
-                        iterator.setPrevious(item);
+                    if(iterator.compareTo(item) < 0){
+                        iterator = iterator.previous();
+                    }
+                    else if(iterator.compareTo(item) == 0){
+                        return false;
+                    }
+                    else {
+                        item.setNext(iterator.next());
+                        item.setPrevious(iterator);
+                        iterator.setNext(item);
                         return true;
                     }
-                    iterator = iterator.previous();
                 }
-                System.out.println("got to the end");
-                iterator.setPrevious(item);
-                item.setNext(iterator);
-
-
-                return true;
+                if(iterator.compareTo(item) < 0) {
+                    item.setNext(iterator);
+                    iterator.setPrevious(item);
+                }else if(iterator.compareTo(item) > 0){
+                    item.setNext(iterator.next());
+                    item.setPrevious(iterator);
+                    iterator.setNext(item);
+                }
+                else return false;
 
 
 
         } else if (root.compareTo(item) > 0) { //item is bigger
-                /*if(root.next() == null)
-                {
-                    root.setNext(item);
-                    item.setPrevious(root);
-                    return true;
-                }*/
-                ListItem iterator = root;
-                while(iterator.next() != null){
-                    if(iterator.compareTo(item) < 0){ //first time, when item will be smaller
-                        item.setNext(iterator);
-                        item.setPrevious(iterator.previous());
-                        iterator.previous().setNext(item);
-                        iterator.setPrevious(item);
-                        return true;
-                    }
-                    iterator = iterator.next();
-                }
-                iterator.setNext(item);
-                item.setPrevious(iterator);
-
-
+                System.out.println("still in develop");
                 return true;
         }
             return false;
