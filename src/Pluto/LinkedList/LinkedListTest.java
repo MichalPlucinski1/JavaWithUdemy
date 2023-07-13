@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
-public class MyLinkedList {
+public class LinkedListTest {
     public static void main(String[]args){
         LinkedList<String> items = new LinkedList<>();
 
