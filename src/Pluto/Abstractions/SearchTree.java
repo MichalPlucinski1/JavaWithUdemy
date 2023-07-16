@@ -15,19 +15,35 @@ public class SearchTree implements NodeList{
     @Override
     public boolean addItem(ListItem item) {
         //should add item, avoiding duplicated, must use Node.compareTo()
-        if(root == null){
+        if(root == null) {
             root = item;
             return true;
         }
-        if(root.compareTo(item) < 0){
-            root.setPrevious(item);
-        } else if (root.compareTo(item) > 0) {
-            root.setNext(item);
-        }
-        else
-            return false;
+        ListItem iterator = root;
 
-        return true;
+        while(iterator != null){
+
+            if( iterator.compareTo(item) < 0){
+                if(iterator.previous() == null){
+                    iterator.setPrevious(item);
+                    return true;
+                }
+                else{
+                    iterator = iterator.previous();
+                }
+            } else if( iterator.compareTo(item) > 0) {
+                if (iterator.next() == null) {
+                    iterator.setNext(item);
+                    return true;
+                } else {
+                    iterator = iterator.next();
+                }
+            }
+            else
+                return false;
+        }
+        return false;
+
     }
 
     @Override
