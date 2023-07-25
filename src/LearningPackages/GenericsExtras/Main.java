@@ -2,19 +2,11 @@ package LearningPackages.GenericsExtras;
 
 import LearningPackages.GenericsExtras.model.LPAStudent;
 import LearningPackages.GenericsExtras.model.Student;
-import LearningPackages.GenericsExtras.util.QueryItem;
 import LearningPackages.GenericsExtras.util.QueryList;
 
 import java.util.ArrayList;
 import java.util.List;
 
-record Employee(String name) implements QueryItem {
-
-    @Override
-    public boolean matchFieldValue(String fieldName, String value) {
-        return false;
-    }
-}
 
 public class Main {
 
