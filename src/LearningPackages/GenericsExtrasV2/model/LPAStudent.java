@@ -1,4 +1,4 @@
-package LearningPackages.GenericsExtras.model;
+package LearningPackages.GenericsExtrasV2.model;
 
 public class LPAStudent extends Student {
 
