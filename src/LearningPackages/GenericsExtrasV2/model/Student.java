@@ -7,6 +7,7 @@ import java.util.Random;
 
 public class Student implements QueryItem {
 
+    private int id;
     private String name;
     private String course;
     private int yearStarted;
@@ -31,6 +32,14 @@ public class Student implements QueryItem {
     public int getYearStarted() {
         return yearStarted;
     }
+
+    public int getId() {
+        return id;
+    }
+
+
+
+
 
     @Override
     public boolean matchFieldValue(String fieldName, String value) {
