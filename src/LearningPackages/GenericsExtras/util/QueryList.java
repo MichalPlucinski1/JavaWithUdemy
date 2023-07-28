@@ -1,7 +1,7 @@
-package LearningPackages.GenericsExtrasV2.util;
+package LearningPackages.GenericsExtras.util;
 
 
-import LearningPackages.GenericsExtrasV2.model.Student;
+import LearningPackages.GenericsExtras.model.Student;
 
 import java.util.ArrayList;
 import java.util.List;

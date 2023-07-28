@@ -1,4 +1,4 @@
-package LearningPackages.GenericsExtrasV2.util;
+package LearningPackages.GenericsExtras.util;
 
 public interface QueryItem {
     boolean matchFieldValue(String fieldName, String value);
