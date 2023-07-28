@@ -13,9 +13,6 @@ public class Main {
     public static void main(String[] args) {
 
         int studentCount = 10;
-
-
-        //list of normal students
         List<Student> students = new ArrayList<>();
         for (int i = 0; i < studentCount; i++) {
             students.add(new Student());
@@ -24,8 +21,6 @@ public class Main {
 //        printList(students);
         printMoreLists(students);
 
-
-        //list of lpa students
         List<LPAStudent> lpaStudents = new ArrayList<>();
         for (int i = 0; i < studentCount; i++) {
             lpaStudents.add(new LPAStudent());
