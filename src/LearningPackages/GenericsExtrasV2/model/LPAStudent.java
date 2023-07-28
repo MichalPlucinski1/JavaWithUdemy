@@ -17,8 +17,11 @@ public class LPAStudent extends Student {
         return percentComplete;
     }
 
-    /*@Override
-    public ArrayList<LPAStudent> matchFieldValue(String fieldName, String value) {
+    @Override
+    public boolean matchFieldValue(String fieldName, String value) {
+        if(fieldName.equalsIgnoreCase("percentComplete")){
+            return percentComplete <= Integer.parseInt(value);
+        }
         return super.matchFieldValue(fieldName, value);
-    }*/
+    }
 }
