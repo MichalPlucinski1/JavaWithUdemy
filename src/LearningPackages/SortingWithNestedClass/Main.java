@@ -20,12 +20,28 @@ public class Main {
 
         System.out.println();
 
-        employees.sort(new Employee.EmployeeComparator<>("yearstarted").reversed());
+        employees.sort(new Employee.EmployeeComparator<>("yearStarted").reversed());
         printList(employees);
+
+
+        System.out.println("\n\tStore Members\t");
+
+        List<StoreEmployee> storeEmployees = new ArrayList<>(List.of(
+              new StoreEmployee(10015, "Meg", 2019, "Target"),
+              new StoreEmployee(10055, "Bud", 2016, "Target"),
+              new StoreEmployee(10017, "Joe", 2021, "Walmart"),
+              new StoreEmployee(10016, "Marty", 2018, "Walmart"),
+              new StoreEmployee(10101, "Tom", 2020, "Macys")
+        ));
+
+        var comparator = new StoreEmployee().new StoreComparator<>();
+        storeEmployees.sort(comparator);
+        printList(storeEmployees);
+
     }
 
-    public static void  printList (List<Employee> employees){
-        for (Employee e : employees){
+    public static void  printList (List<?> employees){
+        for (var e: employees){
             System.out.println(e);
         }
     }
