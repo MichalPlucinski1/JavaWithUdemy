@@ -1,0 +1,4 @@
+class vs interface:
+A class is a blueprint from which we can create objects that share the same configuration - properties and methods
+
+An interface is a group of related properties and methods that describe an object, but neither provides implementation nor initialisation for them.
