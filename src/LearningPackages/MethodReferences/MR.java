@@ -14,7 +14,7 @@ class PlainOld{
     }
 }
 
-public class Bounded {
+public class MR {
     public static void main(String[] args) {
         calculator(Integer::sum, 10, 25);
         calculator(Double::sum, 10.5, 25.3);
