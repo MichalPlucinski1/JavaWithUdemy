@@ -37,9 +37,7 @@ public class Main {
 
         Predicate<String> isEqual = (String s) -> {
             String[] arr = s.split(" ");
-            if(Objects.equals(arr[0], arr[1]))
-                return true;
-            return false;
+            return Objects.equals(arr[0], arr[1]);
         };
 
 
